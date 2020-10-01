@@ -9,3 +9,8 @@
 7. Migrate the database using the command `python manage.py migrate`
 8. Create your superuser using the command `python manage.py createsuperuser`
 9. Run the app using `python manage.py runserver`
+
+## API Documentation
+
+1. Run the app using `python manage.py runserver`
+2. Open browser and access this url `localhost:8000/api-docs`

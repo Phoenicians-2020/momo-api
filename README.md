@@ -1,6 +1,3 @@
-# Barter Project
-
-
 ## Local project setup
 
 1. Create a virtualenv running on Python 3.8

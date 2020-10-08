@@ -4,6 +4,7 @@ DB_USER = ''
 DB_PASSWORD = ''
 DB_HOST = 'localhost'
 
+SECRET_KEY = '^6r9*4he)(16da%0qpz(=0x^^=c814i)rz8#ek%cq6^qq87wkk'
 
 DEBUG = True
 

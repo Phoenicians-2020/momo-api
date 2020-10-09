@@ -42,6 +42,7 @@ from products.models import Product, ProductType
 #         else:
 #             return Response(status=status.HTTP_404_NOT_FOUND)
 
+@swagger_auto_schema(tags=['Products'])
 class ProductsViewSet(viewsets.ModelViewSet):
     """
     Handles api endpoints:

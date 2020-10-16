@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'whitenoise.runserver_nostatic',
 
-    'products'
+    'products',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Custom user model
+AUTH_USER_MODEL = "users.User"
 
 
 # Static files (CSS, JavaScript, Images)

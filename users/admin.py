@@ -31,6 +31,7 @@ class UserAdmin(UserAdmin):
                     'phone_number',
                     'email',
                     'password',
+                    'is_staff',
                     'groups'
                 ]
             }

@@ -1,9 +1,39 @@
 from rest_framework import serializers
 
 from products.models import Product, ProductType
+from users.models import User, Location
+
+
+class LocationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Location
+        fields = (
+            'address',
+            'province',
+            'city',
+            'postal_code',
+            'country',
+        )
+
+
+class UserSerializer(serializers.ModelSerializer):
+    location = LocationSerializer(read_only=True)
+
+    class Meta:
+        model = User
+        fields = (
+            'name',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number',
+            'location',
+        )
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    seller = UserSerializer(read_only=True)
     product_photo = serializers.SerializerMethodField('get_profile_picture')
 
     def get_profile_picture(self, obj):
@@ -12,15 +42,11 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
+            'seller',
             'product_name',
             'product_type',
             'product_description',
             'product_photo',
-            'product_location',
-            'seller_address',
-            'seller_name',
-            'seller_email',
-            'seller_phone_number',
             'price',
         )
 

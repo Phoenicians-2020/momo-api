@@ -8,7 +8,8 @@ class ProductFilter(filters.FilterSet):
     Custom filter class for filtering products by product type
     """
     product_type = filters.CharFilter(field_name='product_type__product_type_name', lookup_expr='icontains')
+    seller = filters.CharFilter(field_name='seller__name', lookup_expr='icontains')
 
     class Meta:
         model = Product
-        fields = ['product_type']
+        fields = ['product_type', 'seller']

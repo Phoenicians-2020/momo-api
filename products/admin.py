@@ -13,16 +13,12 @@ class ProductAdmin(admin.ModelAdmin):
         "id",
         "product_name",
         "product_type",
-        "seller_name",
-        "seller_email",
         "price"
     ]
 
     search_fields = [
         "product_name",
         "product_type",
-        "seller_name",
-        "seller_email"
     ]
 
 

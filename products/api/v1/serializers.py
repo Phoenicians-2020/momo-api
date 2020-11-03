@@ -35,9 +35,13 @@ class UserSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     seller = UserSerializer(read_only=True)
     product_photo = serializers.SerializerMethodField('get_profile_picture')
+    product_type = serializers.SerializerMethodField('get_product_type_name')
 
     def get_profile_picture(self, obj):
         return obj.product_photo.url if obj.product_photo else None
+
+    def get_product_type_name(self, obj):
+        return obj.product_type.product_type_name if obj.product_type else None
 
     class Meta:
         model = Product

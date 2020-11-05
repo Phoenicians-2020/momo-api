@@ -32,9 +32,13 @@ class ProductsViewSet(viewsets.ModelViewSet):
         'seller__first_name',
         'seller__last_name',
         'seller__email',
-        'seller__username',
         'seller__phone_number',
         'seller__name',
+        'seller__location__address',
+        'seller__location__province',
+        'seller__location__city',
+        'seller__location__postal_code',
+        'seller__location__country',
         'product_description',
     )
     filter_class = ProductFilter

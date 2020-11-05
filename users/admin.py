@@ -2,7 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 # from users.forms import UserCreateForm
-from users.models import User, Location
+from users.models import (
+    Location,
+    Seller,
+    User
+)
 
 
 @admin.register(User)
@@ -11,14 +15,12 @@ class UserAdmin(UserAdmin):
         "id",
         "name",
         "email",
-        "phone_number",
         "is_staff"
     ]
 
     search_fields = [
         "name",
         "email",
-        "phone_number"
     ]
 
     fieldsets = [
@@ -28,7 +30,6 @@ class UserAdmin(UserAdmin):
                     'username',
                     'first_name',
                     'last_name',
-                    'phone_number',
                     'email',
                     'password',
                     'is_staff',
@@ -45,11 +46,46 @@ class UserAdmin(UserAdmin):
         return obj.name
 
 
+@admin.register(Seller)
+class SellerAdmin(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "name",
+        "email",
+        "phone_number"
+    ]
+
+    search_fields = [
+        "name",
+        "email",
+        "phone_number"
+    ]
+
+    fieldsets = [
+        [
+            'System Users', {
+                'fields': [
+                    'first_name',
+                    'last_name',
+                    'email',
+                    'phone_number'
+                ]
+            }
+        ]
+    ]
+
+    def save_model(self, request, obj, form, change):
+        obj.name = obj.first_name + ' ' + obj.last_name
+        super().save_model(request, obj, form, change)
+
+        return obj.name
+
+
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = [
         "id",
-        "user",
+        "seller",
         "address",
         "city",
         "province",

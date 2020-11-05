@@ -10,14 +10,24 @@ optional = {
 
 class User(AbstractUser):
     name = models.CharField(_('Full Name of User'), blank=True, null=True, max_length=255)
-    phone_number = models.CharField(max_length=11, **optional)
 
     def __str__(self):
         return self.first_name
 
 
+class Seller(models.Model):
+    name = models.CharField(_('Full Name of Seller'), blank=True, null=True, max_length=255)
+    first_name = models.CharField(_('First Name of Seller'), blank=True, null=True, max_length=255)
+    last_name = models.CharField(_('Last Name of Seller'), blank=True, null=True, max_length=255)
+    email = models.CharField(_('Email of Seller'), blank=True, null=True, max_length=255)
+    phone_number = models.CharField(max_length=11, **optional)
+
+    def __str__(self):
+        return self.name
+
+
 class Location(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="location")
+    seller = models.OneToOneField(Seller, on_delete=models.CASCADE, related_name="location", **optional)
     address = models.CharField(max_length=255)
     province = models.CharField(_("Province"), max_length=50)
     city = models.CharField(_('City'), blank=True, null=True, max_length=255)

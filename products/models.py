@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from users.models import User
+from users.models import Seller
 
 optional = {
     'null': True,
@@ -19,7 +19,7 @@ class ProductType(models.Model):
 
 
 class Product(models.Model):
-    seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="products", **optional)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name="products", **optional)
     product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE, related_name="products")
     product_name = models.CharField(max_length=255, **optional)
     product_description = models.CharField(max_length=255, **optional)

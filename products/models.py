@@ -23,7 +23,7 @@ class Product(models.Model):
     product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE, related_name="products")
     product_name = models.CharField(max_length=255, **optional)
     product_description = models.CharField(max_length=255, **optional)
-    product_photo = models.ImageField(upload_to='product_images/', **optional)
+    product_photo = models.ImageField(upload_to='static/product_images/', **optional)
     price = models.DecimalField(max_digits=20, decimal_places=8, **optional)
 
     def __str__(self):

@@ -47,3 +47,10 @@ EMAIL_USE_TLS = True
 SESSION_SECURITY_WARN_AFTER = 540
 SESSION_EXPIRE_AFTER = 600
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# AWS S3 Credentials
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = '<insert-access-key-id-here>'
+AWS_SECRET_ACCESS_KEY = '<insert-secret-access-key-here>'
+AWS_STORAGE_BUCKET_NAME = '<insert-bucket-name-here>'
+AWS_S3_REGION_NAME = '<insert-s3-region-name-here>'

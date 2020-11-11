@@ -150,6 +150,10 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+AWS_STORAGE_BUCKET_NAME = ''
+AWS_S3_REGION_NAME = ''
 
 STATIC_URL = '/static/'
 
